@@ -1,27 +1,35 @@
 var express = require('express')
 var app = express()
 
-app.listen(3000, function () {
-    console.log('Listening on port 3000')
-})
+app.listen(3000)
 
 app.get('/nice/:to/:from', function (req, res) {
-    var from = req.params.from
+    var sentFrom = req.params.from
     var to = req.params.to
-    var message = 'Hey! your\'re doing a great job ' + to + '.  This was sent from ' + from + '.'
-    res.send(message)
+    var reply = 'Hey! your\'re doing a great job ' + to + '.'
+    res.send({
+        message: reply,
+        from: sentFrom
+    })
   })
 
 app.get('/neutral/:to/:from', function (req, res) {
-    var from = req.params.from
+    var sentFrom = req.params.from
     var to = req.params.to
-    var message =  from + ' has no strong feelings to ' + to + ' one way or the other. '
-    res.send(message)
+    var reply =  sentFrom + ' has no strong feelings to ' + to + ' one way or the other.'
+    res.send({
+        message: reply,
+        from: sentFrom
+    })
   })
 
 app.get('/whatever/:to/:from', function (req, res) {
-    var from = req.params.from
+    var sentFrom = req.params.from
     var to = req.params.to
-    var message =  from + ' thinks  ' + to + ' is doing well or something I don\'t really care. '
-    res.send(message)
+    var reply =  sentFrom + ' thinks  ' + to + ' is doing well or something I don\'t really care.'
+    res.send({
+        message: reply,
+        from: sentFrom
+    })
   })
+
