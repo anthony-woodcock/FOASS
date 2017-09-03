@@ -1,7 +1,4 @@
-var express = require('express')
-var app = express()
-
-app.listen(3000)
+function controller (app) {
 
 app.get('/nice/:to/:from', function (req, res) {
     var sentFrom = req.params.from
@@ -23,6 +20,7 @@ app.get('/neutral/:to/:from', function (req, res) {
     })
   })
 
+
 app.get('/whatever/:to/:from', function (req, res) {
     var sentFrom = req.params.from
     var to = req.params.to
@@ -32,4 +30,6 @@ app.get('/whatever/:to/:from', function (req, res) {
         from: sentFrom
     })
   })
+}
 
+module.exports = controller
